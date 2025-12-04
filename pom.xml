@@ -1,26 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" 
+<project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>com.audit.qosc</groupId>
     <artifactId>qosc-generator</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
-
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        
-        <checkstyle.version>3.3.1</checkstyle.version> 
+       
+        <checkstyle.version>3.3.1</checkstyle.version>
         <pmd.version>3.21.2</pmd.version>
         <spotbugs.version>4.8.3.0</spotbugs.version>
         <javadoc.version>3.6.3</javadoc.version>
         <dependency.version>3.6.0</dependency.version>
+        <compiler.version>3.11.0</compiler.version>
     </properties>
-
     <dependencies>
         <dependency>
             <groupId>com.client</groupId>
@@ -28,7 +26,6 @@
             <version>1.0</version>
         </dependency>
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
@@ -37,11 +34,12 @@
                 <configuration>
                     <filesets>
                         <fileset><directory>target/client-sources</directory><includes><include>**/*</include></includes><excludes><exclude>.gitkeep</exclude></excludes></fileset>
+                        <fileset><directory>target/client-classes</directory><includes><include>**/*</include></includes><excludes><exclude>.gitkeep</exclude></excludes></fileset>
                         <fileset><directory>target/audit</directory><includes><include>**/*</include></includes><excludes><exclude>.gitkeep</exclude></excludes></fileset>
                     </filesets>
                 </configuration>
             </plugin>
-            
+           
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
@@ -66,7 +64,31 @@
                     </execution>
                 </executions>
             </plugin>
-
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${compiler.version}</version>
+                <executions>
+                    <execution>
+                        <id>compile-client-sources</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                        <configuration>
+                            <source>${maven.compiler.source}</source>
+                            <target>${maven.compiler.target}</target>
+                            <compilerArgs>
+                                <arg>-parameters</arg>
+                            </compilerArgs>
+                            <compileSourceRoots>
+                                <compileSourceRoot>${project.build.directory}/client-sources</compileSourceRoot>
+                            </compileSourceRoots>
+                            <outputDirectory>${project.build.directory}/client-classes</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
@@ -85,7 +107,7 @@
                                     <directory>${basedir}</directory>
                                     <filtering>false</filtering>
                                     <includes>
-                                        <include>${basedir}/pmd-rules.xml</include>
+                                        <include>pmd-rules.xml</include>
                                     </includes>
                                 </resource>
                             </resources>
@@ -93,7 +115,7 @@
                     </execution>
                 </executions>
             </plugin>
-
+           
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
@@ -102,7 +124,7 @@
                     <dependency>
                         <groupId>com.google.guava</groupId>
                         <artifactId>guava</artifactId>
-                        <version>32.0.1-jre</version> 
+                        <version>32.0.1-jre</version>
                     </dependency>
                 </dependencies>
                 <executions>
@@ -123,7 +145,71 @@
                     </execution>
                 </executions>
             </plugin>
+           <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-pmd-plugin</artifactId>
+    <version>${pmd.version}</version>
+    <configuration>
+        <!-- On force l'écriture du rapport XML au bon endroit pour le check -->
+        <targetDirectory>${project.build.directory}/audit/pmd</targetDirectory>
+    </configuration>
+    <executions>
+        <execution>
+            <id>pmd-generate</id>
+            <phase>validate</phase>
+            <goals>
+                <goal>pmd</goal>
+            </goals>
+            <configuration>
+                <rulesets>
+                    <ruleset>${basedir}/pmd-rules.xml</ruleset>
+                </rulesets>
+                <compileSourceRoots>
+                    <compileSourceRoot>${project.build.directory}/client-sources</compileSourceRoot>
+                </compileSourceRoots>
+                <failOnViolation>false</failOnViolation>
+                <printFailingErrors>true</printFailingErrors>
+                <!-- On force la sortie XML ici aussi -->
+                <format>xml</format>
+                <targetDirectory>${project.build.directory}/audit/pmd</targetDirectory>
+            </configuration>
+        </execution>
 
+        <execution>
+            <id>pmd-check</id>
+            <phase>validate</phase>
+            <goals>
+                <goal>check</goal>
+            </goals>
+            <configuration>
+                <failOnViolation>true</failOnViolation>
+                <minimumTokens>100</minimumTokens>
+            </configuration>
+        </execution>
+    </executions>
+</plugin>
+            <plugin>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs-maven-plugin</artifactId>
+                <version>${spotbugs.version}</version>
+                <executions>
+                    <execution>
+                        <id>spotbugs-client</id>
+                        <phase>validate</phase>
+                        <goals><goal>check</goal></goals>
+                        <configuration>
+                            <classFilesDirectory>${project.build.directory}/client-classes</classFilesDirectory>
+                            <failOnError>true</failOnError>
+                            <xmlOutput>true</xmlOutput>
+                            <xmlOutputDirectory>${project.build.directory}/audit/spotbugs</xmlOutputDirectory>
+                            <effort>Max</effort>
+                            <threshold>Low</threshold>
+                            <includeFilterFile>spotbugs-security-include.xml</includeFilterFile>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+           
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
@@ -137,7 +223,7 @@
                             <sourcepath>${project.build.directory}/client-sources</sourcepath>
                             <failOnError>true</failOnError>
                             <doclint>none</doclint>
-                            <source>17</source> 
+                            <source>${maven.compiler.source}</source>
                             <encoding>UTF-8</encoding>
                         </configuration>
                     </execution>
@@ -153,65 +239,6 @@
                     <dependency><groupId>jakarta.persistence</groupId><artifactId>jakarta.persistence-api</artifactId><version>3.1.0</version></dependency>
                 </dependencies>
             </plugin>
-            
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-pmd-plugin</artifactId>
-                <version>${pmd.version}</version>
-                <executions>
-                    <execution>
-                        <id>pmd-generate</id>
-                        <phase>validate</phase> 
-                        <goals>
-                            <goal>pmd</goal> 
-                        </goals>
-                        <configuration>
-                            <rulesets>
-                               <ruleset>${basedir}/pmd-rules.xml</ruleset>
-                            </rulesets>
-                            <sourceDirectory>${project.build.directory}/client-sources</sourceDirectory>
-                            <failOnViolation>false</failOnViolation>
-                            <printFailingErrors>true</printFailingErrors>
-                        </configuration>
-                    </execution>
-                    
-                    <execution>
-                        <id>pmd-check</id>
-                        <phase>validate</phase> 
-                        <goals>
-                            <goal>check</goal> 
-                        </goals>
-                        <configuration>
-                            <targetDirectory>${project.build.directory}/audit/pmd</targetDirectory>
-                            <failOnViolation>true</failOnViolation>
-                            <printFailingErrors>true</printFailingErrors>
-                            <minimumTokens>100</minimumTokens>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>com.github.spotbugs</groupId>
-                <artifactId>spotbugs-maven-plugin</artifactId>
-                <version>${spotbugs.version}</version>
-                <executions>
-                    <execution>
-                        <id>spotbugs-client</id>
-                        <phase>validate</phase>
-                        <goals><goal>check</goal></goals>
-                        <configuration>
-                            <failOnError>true</failOnError>
-                            <xmlOutput>true</xmlOutput>
-                            <xmlOutputDirectory>${project.build.directory}/audit/spotbugs</xmlOutputDirectory>
-                            <effort>Max</effort>
-                            <threshold>Low</threshold>
-                            <includeFilterFile>spotbugs-security-include.xml</includeFilterFile>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
         </plugins>
     </build>
 </project>

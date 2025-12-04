@@ -3,24 +3,22 @@
     xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 https://pmd.sourceforge.io/ruleset_2_0_0.xsd">
-
     <description>
         Règles PMD de base pour l'audit de qualité du code.
     </description>
-
-    <rule ref="category/java/design.xml/AvoidDeeplyNestedIfElse"/>
+    <rule ref="category/java/design.xml/AvoidDeeplyNestedIfStmts"/>  <!-- Corrected from AvoidDeeplyNestedIfElse -->
     <rule ref="category/java/design.xml/CognitiveComplexity"/>
     <rule ref="category/java/design.xml/CyclomaticComplexity"/>
     <rule ref="category/java/design.xml/NPathComplexity"/>
-    <rule ref="category/java/design.xml/LooseCoupling"/>
-    
+    <rule ref="category/java/design.xml/LoosePackageCoupling"/>  <!-- Corrected from LooseCoupling -->
+   
     <rule ref="category/java/codestyle.xml/CommentDefaultAccessModifier"/>
     <rule ref="category/java/codestyle.xml/MethodNamingConventions"/>
     <rule ref="category/java/codestyle.xml/FieldNamingConventions"/>
     <rule ref="category/java/codestyle.xml/LocalVariableNamingConventions"/>
-    
+   
     <rule ref="category/java/errorprone.xml/EmptyCatchBlock"/>
     <rule ref="category/java/errorprone.xml/AvoidBranchingStatementAsLastInLoop"/>
     <rule ref="category/java/errorprone.xml/DataflowAnomalyAnalysis"/>
-    
+   
 </ruleset>
