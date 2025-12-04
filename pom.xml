@@ -87,6 +87,9 @@
                         <goals>
                             <goal>check</goal>
                         </goals>
+                        <configuration>
+                            <failOnViolation>true</failOnViolation>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
@@ -97,13 +100,13 @@
                 <version>3.21.2</version>
                 <configuration>
                     <rulesets>
-                        <ruleset>/category/java/design.xml</ruleset>
-                        <ruleset>/category/java/errorprone.xml</ruleset>
-                        <ruleset>/category/java/performance.xml</ruleset>
+                        <ruleset>category/java/design.xml</ruleset>
+                        <ruleset>category/java/errorprone.xml</ruleset>
+                        <ruleset>category/java/performance.xml</ruleset>
                     </rulesets>
                     <includeTests>true</includeTests>
                     <aggregate>true</aggregate> 
-                    <sourceDirectory>${project.build.directory}/client-sources</sourceDirectory>
+                    <failOnViolation>true</failOnViolation>
                 </configuration>
                 <executions>
                     <execution>
@@ -111,6 +114,10 @@
                             <goal>check</goal>
                             <goal>cpd-check</goal>
                         </goals>
+                        <configuration>
+                            <sourceDirectory>${project.build.directory}/client-sources</sourceDirectory>
+                            <failOnResourceViolation>true</failOnResourceViolation>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
@@ -120,17 +127,49 @@
                 <artifactId>spotbugs-maven-plugin</artifactId>
                 <version>4.8.3.0</version>
                 <configuration>
-                    <failOnError>false</failOnError>
+                    <failOnError>true</failOnError> 
                     <includeTests>true</includeTests>
-                    <auxClasspath>${project.basedir}/lib/${client.jar.name}</auxClasspath>
                     <effort>Max</effort>
                     <threshold>Low</threshold>
+                     <sourceDirectories>
+                        <directory>${project.build.directory}/client-sources</directory>
+                     </sourceDirectories>    
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.h3xstream.findsecbugs</groupId>
+                        <artifactId>findsecbugs-plugin</artifactId>
+                        <version>1.12.0</version>
+                    </dependency>
+                </dependencies>
                 <executions>
                     <execution>
                         <goals>
                             <goal>check</goal>
                         </goals>
+                        <configuration>
+                            <auxClasspath>${project.basedir}/lib/${client.jar.name}</auxClasspath>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.6.3</version>
+                <executions>
+                    <execution>
+                        <id>check-javadoc</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                        <configuration>
+                            <sourcepath>${project.build.directory}/client-sources</sourcepath>
+                            <failOnError>true</failOnError>
+                            <doclint>none</doclint> 
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
@@ -140,26 +179,13 @@
 
     <reporting>
         <plugins>
-
-        <plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jxr-plugin</artifactId>
                 <version>3.3.2</version>
                 <configuration>
                     <sourceDirectory>${project.build.directory}/client-sources</sourceDirectory>
                 </configuration>
-            </plugin>
-            
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-site-plugin</artifactId>
-                <version>3.12.1</version>
-            </plugin>
-            
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>3.5.0</version>
             </plugin>
 
             <plugin>
@@ -186,7 +212,12 @@
                 <groupId>com.github.spotbugs</groupId>
                 <artifactId>spotbugs-maven-plugin</artifactId>
                 <version>4.8.3.0</version>
+                <configuration>
+                    <effort>Max</effort>
+                    <threshold>Low</threshold>
+                </configuration>
             </plugin>
+            
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
@@ -196,6 +227,17 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <version>3.3.1</version>
+            </plugin>
+            
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>3.5.0</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.12.1</version>
             </plugin>
         </plugins>
     </reporting>
