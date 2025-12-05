@@ -132,7 +132,6 @@
                             <compileSourceRoots>
                                 <compileSourceRoot>${project.build.directory}/client-sources</compileSourceRoot>
                             </compileSourceRoots>
-                            <outputDirectory>${project.build.directory}/client-classes</outputDirectory>
                         </configuration>
                     </execution>
                 </executions>
@@ -202,6 +201,9 @@
                 <configuration>
                     <!-- On force l'écriture du rapport XML au bon endroit pour le check -->
                     <targetDirectory>${project.build.directory}/audit/pmd</targetDirectory>
+                    <inputPaths>
+                          <inputPath>${project.build.directory}/client-sources</inputPath>
+                    </inputPaths>
                 </configuration>
                 <executions>
                     <execution>
@@ -270,7 +272,7 @@
                         <id>check-javadoc</id>
                         <phase>verify</phase>
                         <goals>
-                            <goal>jar</goal>
+                            <goal>javadoc</goal>
                         </goals>
                         <configuration>
                             <sourcepath>${project.build.directory}/client-sources</sourcepath>
