@@ -11,19 +11,34 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-       
+      
         <checkstyle.version>3.3.1</checkstyle.version>
         <pmd.version>3.28.0</pmd.version>
         <spotbugs.version>4.8.3.0</spotbugs.version>
         <javadoc.version>3.6.3</javadoc.version>
         <dependency.version>3.6.0</dependency.version>
         <compiler.version>3.11.0</compiler.version>
+        <lombok.version>1.18.30</lombok.version> <!-- Version Lombok stable pour Java 17 -->
     </properties>
     <dependencies>
         <dependency>
             <groupId>com.client</groupId>
             <artifactId>client-app</artifactId>
             <version>1.0</version>
+        </dependency>
+        <!-- Lombok pour annotation processing -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- SLF4J pour @Slf4j -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>2.0.9</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
     <build>
@@ -63,7 +78,7 @@
                     </filesets>
                 </configuration>
             </plugin>
-           
+          
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
@@ -107,6 +122,13 @@
                             <compilerArgs>
                                 <arg>-parameters</arg>
                             </compilerArgs>
+                            <annotationProcessorPaths>
+                                <path>
+                                    <groupId>org.projectlombok</groupId>
+                                    <artifactId>lombok</artifactId>
+                                    <version>${lombok.version}</version>
+                                </path>
+                            </annotationProcessorPaths>
                             <compileSourceRoots>
                                 <compileSourceRoot>${project.build.directory}/client-sources</compileSourceRoot>
                             </compileSourceRoots>
@@ -141,7 +163,7 @@
                     </execution>
                 </executions>
             </plugin>
-           
+          
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
@@ -202,7 +224,6 @@
                             <targetDirectory>${project.build.directory}/audit/pmd</targetDirectory>
                         </configuration>
                     </execution>
-
                     <execution>
                         <id>pmd-check</id>
                         <phase>validate</phase>
@@ -228,13 +249,6 @@
                             <goal>check</goal>
                         </goals>
                         <configuration>
-                        <classes>
-                                <class>${project.build.directory}/client-classes</class>
-                            </classes>
-                            <!-- <auxClasspath>
-                                <element>${project.build.directory}/client-classes</element>
-                                <element>${project.build.directory}/client-app-1.0.jar</element>
-                                </auxClasspath> -->
                             <classFilesDirectory>${project.build.directory}/client-classes</classFilesDirectory>
                             <failOnError>true</failOnError>
                             <xmlOutput>true</xmlOutput>
@@ -246,7 +260,7 @@
                     </execution>
                 </executions>
             </plugin>
-           
+          
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
@@ -261,7 +275,7 @@
                         <configuration>
                             <sourcepath>${project.build.directory}/client-sources</sourcepath>
                             <failOnError>true</failOnError>
-                           <doclint>all,-missing</doclint>  <!-- échoue si Javadoc manquant sur public/protected -->
+                            <doclint>all,-missing</doclint> <!-- échoue si Javadoc manquant sur public/protected -->
                             <source>${maven.compiler.source}</source>
                             <encoding>UTF-8</encoding>
                         </configuration>
@@ -271,7 +285,7 @@
                     <dependency>
                         <groupId>org.projectlombok</groupId>
                         <artifactId>lombok</artifactId>
-                        <version>1.18.30</version>
+                        <version>${lombok.version}</version>
                     </dependency>
                     <dependency>
                         <groupId>org.springframework.boot</groupId>
