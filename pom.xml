@@ -344,6 +344,8 @@
                     <sourceDirectories>
                         <sourceDirectory>${project.build.directory}/client-sources</sourceDirectory>
                     </sourceDirectories>
+                    <!-- On utilise le fichier XML déjà généré par le check précédent -->
+        <checkstyleResultsLocation>${project.build.directory}/checkstyle-result.xml</checkstyleResultsLocation>
                 </configuration>
                 <reportSets>
                     <reportSet>
