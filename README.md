@@ -296,7 +296,8 @@ Code fonctionnel mais qualité insuffisante (doc 0%, complexité haute). Corrige
 ### Génération HTML
 
 ```bash
-xsltproc checkstyle-html.xsl checkstyle-result.xml > checkstyle-result.html
+xsltproc checkstyle-html.xsl target/checkstyle-result.xml > target/checkstyle-result.html
+xsltproc spotbugs-html.xsl target/spotbugsXml.xml > target/spotbugs-result.html
 ```
 
 **Résultat** : Qualité insuffisante. Corriger.
