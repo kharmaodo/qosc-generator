@@ -1,290 +1,101 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>com.audit.qosc</groupId>
     <artifactId>qosc-generator</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
+
+    <name>QOSC Generator</name>
+    <description>Project for generating client code with validation and Javadoc</description>
+
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-      
-        <checkstyle.version>3.3.1</checkstyle.version>
-        <pmd.version>3.28.0</pmd.version>
-        <spotbugs.version>4.8.3.0</spotbugs.version>
-        <javadoc.version>3.6.3</javadoc.version>
-        <dependency.version>3.6.0</dependency.version>
-        <compiler.version>3.11.0</compiler.version>
-        <lombok.version>1.18.30</lombok.version> <!-- Version Lombok stable pour Java 17 -->
+         <lombok.version>1.18.30</lombok.version> 
+        <client.sources.dir>${project.build.directory}/client-sources</client.sources.dir>
     </properties>
+
     <dependencies>
-        <dependency>
-            <groupId>com.client</groupId>
-            <artifactId>client-app</artifactId>
-            <version>1.0</version>
-        </dependency>
-        <!-- Lombok pour annotation processing -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <!-- SLF4J pour @Slf4j -->
+        <!-- Dépendances Java nécessaires (exemples) -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>2.0.9</version>
-            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.10.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.10.0</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
+
     <build>
+        <sourceDirectory>${client.sources.dir}</sourceDirectory>
+
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+            </testResource>
+        </testResources>
+
         <plugins>
-            <plugin>
-                <artifactId>maven-clean-plugin</artifactId>
-                <version>3.2.0</version>
-                <configuration>
-                    <filesets>
-                        <fileset>
-                            <directory>target/client-sources</directory>
-                            <includes>
-                                <include>**/*</include>
-                            </includes>
-                            <excludes>
-                                <exclude>.gitkeep</exclude>
-                            </excludes>
-                        </fileset>
-                        <fileset>
-                            <directory>target/client-classes</directory>
-                            <includes>
-                                <include>**/*</include>
-                            </includes>
-                            <excludes>
-                                <exclude>.gitkeep</exclude>
-                            </excludes>
-                        </fileset>
-                        <fileset>
-                            <directory>target/audit</directory>
-                            <includes>
-                                <include>**/*</include>
-                            </includes>
-                            <excludes>
-                                <exclude>.gitkeep</exclude>
-                            </excludes>
-                        </fileset>
-                    </filesets>
-                </configuration>
-            </plugin>
-          
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>${dependency.version}</version>
-                <executions>
-                    <execution>
-                        <id>unpack-client</id>
-                        <phase>initialize</phase>
-                        <goals>
-                            <goal>unpack</goal>
-                        </goals>
-                        <configuration>
-                            <artifactItems>
-                                <artifactItem>
-                                    <groupId>com.client</groupId>
-                                    <artifactId>client-app</artifactId>
-                                    <version>1.0</version>
-                                    <type>jar</type>
-                                    <classifier>sources</classifier>
-                                    <outputDirectory>${project.build.directory}/client-sources</outputDirectory>
-                                </artifactItem>
-                            </artifactItems>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+
+            <!-- Maven Compiler Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>${compiler.version}</version>
-                <executions>
-                    <execution>
-                        <id>compile-client-sources</id>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>compile</goal>
-                        </goals>
-                        <configuration>
-                            <source>${maven.compiler.source}</source>
-                            <target>${maven.compiler.target}</target>
-                            <compilerArgs>
-                                <arg>-parameters</arg>
-                            </compilerArgs>
-                            <annotationProcessorPaths>
-                                <path>
-                                    <groupId>org.projectlombok</groupId>
-                                    <artifactId>lombok</artifactId>
-                                    <version>${lombok.version}</version>
-                                </path>
-                            </annotationProcessorPaths>
-                            <compileSourceRoots>
-                                <compileSourceRoot>${project.build.directory}/client-sources</compileSourceRoot>
-                            </compileSourceRoots>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>3.3.1</version>
-                <executions>
-                    <execution>
-                        <id>copy-pmd-rules</id>
-                        <phase>validate</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${project.build.outputDirectory}</outputDirectory>
-                            <resources>
-                                <resource>
-                                    <directory>${basedir}</directory>
-                                    <filtering>false</filtering>
-                                    <includes>
-                                        <include>pmd-rules.xml</include>
-                                    </includes>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-          
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>${checkstyle.version}</version>
-                <dependencies>
-                    <dependency>
-                        <groupId>com.google.guava</groupId>
-                        <artifactId>guava</artifactId>
-                        <version>32.0.1-jre</version>
-                    </dependency>
-                </dependencies>
-                <executions>
-                    <execution>
-                        <id>checkstyle-client</id>
-                        <phase>validate</phase>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                        <configuration>
-                            <sourceDirectories>
-                                <sourceDirectory>${project.build.directory}/client-sources</sourceDirectory>
-                            </sourceDirectories>
-                            <configLocation>checkstyle.xml</configLocation>
-                            <consoleOutput>true</consoleOutput>
-                            <failsOnError>true</failsOnError>
-                            <failOnViolation>true</failOnViolation>
-                            <includeTestSourceDirectory>false</includeTestSourceDirectory>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-pmd-plugin</artifactId>
-                <version>${pmd.version}</version>
+                <version>3.11.0</version>
                 <configuration>
-                    <!-- On force l'écriture du rapport XML au bon endroit pour le check -->
-                    <targetDirectory>${project.build.directory}/audit/pmd</targetDirectory>
-                    <inputPaths>
-                          <inputPath>${project.build.directory}/client-sources</inputPath>
-                    </inputPaths>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
-                <executions>
-                    <execution>
-                        <id>pmd-generate</id>
-                        <phase>validate</phase>
-                        <goals>
-                            <goal>pmd</goal>
-                        </goals>
-                        <configuration>
-                            <rulesets>
-                                <ruleset>${basedir}/pmd-rules.xml</ruleset>
-                            </rulesets>
-                            <compileSourceRoots>
-                                <compileSourceRoot>${project.build.directory}/client-sources</compileSourceRoot>
-                            </compileSourceRoots>
-                            <failOnViolation>false</failOnViolation>
-                            <printFailingErrors>true</printFailingErrors>
-                            <!-- On force la sortie XML ici aussi -->
-                            <format>xml</format>
-                            <targetDirectory>${project.build.directory}/audit/pmd</targetDirectory>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>pmd-check</id>
-                        <phase>validate</phase>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                        <configuration>
-                            <failOnViolation>true</failOnViolation>
-                            <minimumTokens>100</minimumTokens>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
-            <plugin>
-                <groupId>com.github.spotbugs</groupId>
-                <artifactId>spotbugs-maven-plugin</artifactId>
-                <version>${spotbugs.version}</version>
-                <executions>
-                    <execution>
-                        <id>spotbugs-client</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                        <configuration>
-                            <classFilesDirectory>${project.build.directory}/client-classes</classFilesDirectory>
-                            <failOnError>true</failOnError>
-                            <xmlOutput>true</xmlOutput>
-                            <xmlOutputDirectory>${project.build.directory}/audit/spotbugs</xmlOutputDirectory>
-                            <effort>Max</effort>
-                            <threshold>Low</threshold>
-                            <includeFilterFile>spotbugs-security-include.xml</includeFilterFile>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-          
+
+            <!-- Maven Javadoc Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>${javadoc.version}</version>
+                <version>3.6.3</version>
                 <executions>
                     <execution>
-                        <id>check-javadoc</id>
+                        <id>generate-client-javadoc</id>
                         <phase>verify</phase>
                         <goals>
                             <goal>javadoc</goal>
                         </goals>
                         <configuration>
-                            <sourcepath>${project.build.directory}/client-sources</sourcepath>
+                            <sourcepath>${client.sources.dir}</sourcepath>
+                            <encoding>${project.build.sourceEncoding}</encoding>
                             <failOnError>true</failOnError>
-                            <doclint>all,-missing</doclint> <!-- échoue si Javadoc manquant sur public/protected -->
-                            <source>${maven.compiler.source}</source>
-                            <encoding>UTF-8</encoding>
+                           <additionalJOptions>
+            <additionalJOption>-Xdoclint:all</additionalJOption>
+        </additionalJOptions>
+                            <excludePackageNames>static,templates</excludePackageNames>
                         </configuration>
                     </execution>
                 </executions>
-                <dependencies>
-                    <dependency>
+                                    <dependencies>
+               <dependency>
                         <groupId>org.projectlombok</groupId>
                         <artifactId>lombok</artifactId>
                         <version>${lombok.version}</version>
@@ -325,7 +136,100 @@
                         <version>3.1.0</version>
                     </dependency>
                 </dependencies>
+
             </plugin>
+
+            <!-- Maven Checkstyle Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>3.3.1</version>
+                <executions>
+                    <execution>
+                        <id>checkstyle-client</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                        <configuration>
+                            <configLocation>checkstyle.xml</configLocation>
+                            <encoding>${project.build.sourceEncoding}</encoding>
+                            <consoleOutput>true</consoleOutput>
+                            <failsOnError>true</failsOnError>
+                            <includeTestSourceDirectory>false</includeTestSourceDirectory>
+                            <sourceDirectories>
+                                <sourceDirectory>${client.sources.dir}</sourceDirectory>
+                            </sourceDirectories>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Maven PMD Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>3.28.0</version>
+                <executions>
+                    <execution>
+                        <id>pmd-check</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                        <configuration>
+                            <sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>
+                            <failOnViolation>true</failOnViolation>
+                            <printFailingErrors>true</printFailingErrors>
+                            <includeTests>false</includeTests>
+                            <sourceDirectories>
+                                <sourceDirectory>${client.sources.dir}</sourceDirectory>
+                            </sourceDirectories>
+                            <rulesets>
+                                <ruleset>rulesets/java/basic.xml</ruleset>
+                                <ruleset>rulesets/java/braces.xml</ruleset>
+                                <ruleset>rulesets/java/unusedcode.xml</ruleset>
+                            </rulesets>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- SpotBugs Plugin -->
+            <plugin>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs-maven-plugin</artifactId>
+                <version>4.8.3.0</version>
+                <executions>
+                    <execution>
+                        <id>spotbugs-client</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                        <configuration>
+                            <source>${maven.compiler.source}</source>
+                            <failOnError>true</failOnError>
+                            <effort>Max</effort>
+                            <threshold>Low</threshold>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Maven Surefire Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.2.5</version>
+                <configuration>
+                    <useModulePath>false</useModulePath>
+                    <includes>
+                        <include>**/*Test.java</include>
+                    </includes>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 </project>
