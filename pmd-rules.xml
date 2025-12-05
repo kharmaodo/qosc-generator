@@ -1,24 +1,96 @@
 <?xml version="1.0"?>
-<ruleset name="Custom PMD Ruleset"
-    xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 https://pmd.sourceforge.io/ruleset_2_0_0.xsd">
+<ruleset name="Audit Qualité HARDCORE PMD 7.x 2025"
+         xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 https://pmd.sourceforge.io/ruleset_2_0_0.xsd">
+
     <description>
-        Règles PMD de base pour l'audit de qualité du code.
+        Ruleset complet et strict pour PMD 7.x (2025).
+        Corrections appliquées :
+        - CognitiveComplexity : propriété 'reportLevel' au lieu de 'methodThreshold' (PMD 7+)
+        - Suppression de l'exclusion DataflowAnomalyAnalysis (règle supprimée en PMD 7)
+        - Suppression de la règle XPath cassée (category/java/xpath.xml/XPath n’existe plus)
+        Seuils corrigés pour CognitiveComplexity (thresholds) + NCSS.
+        Active-le → build explose sur les vrais problèmes (Javadoc, complexité, etc.).
     </description>
-    <rule ref="category/java/design.xml/AvoidDeeplyNestedIfStmts"/>  <!-- Corrected from AvoidDeeplyNestedIfElse -->
-    <rule ref="category/java/design.xml/CognitiveComplexity"/>
-    <rule ref="category/java/design.xml/CyclomaticComplexity"/>
-    <rule ref="category/java/design.xml/NPathComplexity"/>
-    <rule ref="category/java/design.xml/LoosePackageCoupling"/>  <!-- Corrected from LooseCoupling -->
-   
-    <rule ref="category/java/codestyle.xml/CommentDefaultAccessModifier"/>
-    <rule ref="category/java/codestyle.xml/MethodNamingConventions"/>
-    <rule ref="category/java/codestyle.xml/FieldNamingConventions"/>
-    <rule ref="category/java/codestyle.xml/LocalVariableNamingConventions"/>
-   
-    <rule ref="category/java/errorprone.xml/EmptyCatchBlock"/>
-    <rule ref="category/java/errorprone.xml/AvoidBranchingStatementAsLastInLoop"/>
-    <rule ref="category/java/errorprone.xml/DataflowAnomalyAnalysis"/>
-   
+
+    <!-- ====================== DESIGN & METRICS ====================== -->
+    <rule ref="category/java/design.xml/NcssCount">
+        <properties>
+            <!-- Seuils NCSS : méthode max 80, classe max 1000 -->
+            <property name="methodReportLevel" value="80"/>
+            <property name="classReportLevel" value="1000"/>
+        </properties>
+    </rule>
+
+    <rule ref="category/java/design.xml/CyclomaticComplexity">
+        <properties>
+            <property name="methodReportLevel" value="10"/>
+            <property name="classReportLevel" value="80"/>
+        </properties>
+    </rule>
+
+    <rule ref="category/java/design.xml/NPathComplexity">
+        <properties>
+            <property name="reportLevel" value="200"/>
+        </properties>
+    </rule>
+
+    <!-- ✅ CORRECTED: PMD 7+ uses 'reportLevel' (int), no classThreshold -->
+    <rule ref="category/java/design.xml/CognitiveComplexity">
+        <properties>
+            <property name="reportLevel" value="15"/>
+        </properties>
+    </rule>
+
+    <rule ref="category/java/design.xml/AvoidDeeplyNestedIfStmts"/>
+    <rule ref="category/java/design.xml/TooManyMethods">
+        <properties>
+            <property name="maxmethods" value="25"/>
+        </properties>
+    </rule>
+    <rule ref="category/java/design.xml/GodClass"/>
+
+    <!-- ====================== JAVADOC ====================== -->
+    <rule ref="category/java/documentation.xml/CommentRequired">
+        <properties>
+            <property name="classCommentRequirement" value="Required"/>
+            <property name="publicMethodCommentRequirement" value="Required"/>
+            <property name="protectedMethodCommentRequirement" value="Required"/>
+        </properties>
+    </rule>
+    <rule ref="category/java/documentation.xml/UncommentedEmptyMethodBody"/>
+
+    <!-- ====================== BEST PRACTICES ====================== -->
+    <rule ref="category/java/bestpractices.xml">
+        <exclude name="UnusedAssignment"/>
+        <exclude name="UnusedLocalVariable"/>  <!-- Trop bruyant avec Lombok -->
+        <exclude name="UnusedFormalParameter"/>
+    </rule>
+
+    <!-- ====================== CODE STYLE ====================== -->
+    <rule ref="category/java/codestyle.xml">
+        <exclude name="AtLeastOneConstructor"/>      <!-- Inutile -->
+        <exclude name="UnnecessaryFullyQualifiedName"/>
+    </rule>
+
+    <!-- ====================== ERRORPRONE ====================== -->
+    <rule ref="category/java/errorprone.xml">
+        <!-- ✅ REMOVED: DataflowAnomalyAnalysis no longer exists in PMD 7 -->
+        <exclude name="AvoidLiteralsInIfCondition"/> <!-- Trop de faux positifs -->
+    </rule>
+
+    <!-- ====================== PERFORMANCE ====================== -->
+    <rule ref="category/java/performance.xml"/>
+
+    <!-- ====================== MULTITHREADING ====================== -->
+    <rule ref="category/java/multithreading.xml"/>
+
+    <!--
+        ❌ REMOVED: XPath rule was invalid in PMD 7.
+        Reason: 'category/java/xpath.xml/XPath' rule no longer exists.
+        Alternative: Use Checkstyle's FileLength rule to enforce raw line limits,
+        or write a custom Java rule if absolutely needed.
+    -->
+
 </ruleset>

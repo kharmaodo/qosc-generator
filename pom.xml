@@ -13,7 +13,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
        
         <checkstyle.version>3.3.1</checkstyle.version>
-        <pmd.version>3.21.2</pmd.version>
+        <pmd.version>3.28.0</pmd.version>
         <spotbugs.version>4.8.3.0</spotbugs.version>
         <javadoc.version>3.6.3</javadoc.version>
         <dependency.version>3.6.0</dependency.version>
@@ -33,9 +33,33 @@
                 <version>3.2.0</version>
                 <configuration>
                     <filesets>
-                        <fileset><directory>target/client-sources</directory><includes><include>**/*</include></includes><excludes><exclude>.gitkeep</exclude></excludes></fileset>
-                        <fileset><directory>target/client-classes</directory><includes><include>**/*</include></includes><excludes><exclude>.gitkeep</exclude></excludes></fileset>
-                        <fileset><directory>target/audit</directory><includes><include>**/*</include></includes><excludes><exclude>.gitkeep</exclude></excludes></fileset>
+                        <fileset>
+                            <directory>target/client-sources</directory>
+                            <includes>
+                                <include>**/*</include>
+                            </includes>
+                            <excludes>
+                                <exclude>.gitkeep</exclude>
+                            </excludes>
+                        </fileset>
+                        <fileset>
+                            <directory>target/client-classes</directory>
+                            <includes>
+                                <include>**/*</include>
+                            </includes>
+                            <excludes>
+                                <exclude>.gitkeep</exclude>
+                            </excludes>
+                        </fileset>
+                        <fileset>
+                            <directory>target/audit</directory>
+                            <includes>
+                                <include>**/*</include>
+                            </includes>
+                            <excludes>
+                                <exclude>.gitkeep</exclude>
+                            </excludes>
+                        </fileset>
                     </filesets>
                 </configuration>
             </plugin>
@@ -48,7 +72,9 @@
                     <execution>
                         <id>unpack-client</id>
                         <phase>initialize</phase>
-                        <goals><goal>unpack</goal></goals>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
                         <configuration>
                             <artifactItems>
                                 <artifactItem>
@@ -131,7 +157,9 @@
                     <execution>
                         <id>checkstyle-client</id>
                         <phase>validate</phase>
-                        <goals><goal>check</goal></goals>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
                         <configuration>
                             <sourceDirectories>
                                 <sourceDirectory>${project.build.directory}/client-sources</sourceDirectory>
@@ -145,49 +173,49 @@
                     </execution>
                 </executions>
             </plugin>
-           <plugin>
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-pmd-plugin</artifactId>
-    <version>${pmd.version}</version>
-    <configuration>
-        <!-- On force l'écriture du rapport XML au bon endroit pour le check -->
-        <targetDirectory>${project.build.directory}/audit/pmd</targetDirectory>
-    </configuration>
-    <executions>
-        <execution>
-            <id>pmd-generate</id>
-            <phase>validate</phase>
-            <goals>
-                <goal>pmd</goal>
-            </goals>
-            <configuration>
-                <rulesets>
-                    <ruleset>${basedir}/pmd-rules.xml</ruleset>
-                </rulesets>
-                <compileSourceRoots>
-                    <compileSourceRoot>${project.build.directory}/client-sources</compileSourceRoot>
-                </compileSourceRoots>
-                <failOnViolation>false</failOnViolation>
-                <printFailingErrors>true</printFailingErrors>
-                <!-- On force la sortie XML ici aussi -->
-                <format>xml</format>
-                <targetDirectory>${project.build.directory}/audit/pmd</targetDirectory>
-            </configuration>
-        </execution>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>${pmd.version}</version>
+                <configuration>
+                    <!-- On force l'écriture du rapport XML au bon endroit pour le check -->
+                    <targetDirectory>${project.build.directory}/audit/pmd</targetDirectory>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>pmd-generate</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>pmd</goal>
+                        </goals>
+                        <configuration>
+                            <rulesets>
+                                <ruleset>${basedir}/pmd-rules.xml</ruleset>
+                            </rulesets>
+                            <compileSourceRoots>
+                                <compileSourceRoot>${project.build.directory}/client-sources</compileSourceRoot>
+                            </compileSourceRoots>
+                            <failOnViolation>false</failOnViolation>
+                            <printFailingErrors>true</printFailingErrors>
+                            <!-- On force la sortie XML ici aussi -->
+                            <format>xml</format>
+                            <targetDirectory>${project.build.directory}/audit/pmd</targetDirectory>
+                        </configuration>
+                    </execution>
 
-        <execution>
-            <id>pmd-check</id>
-            <phase>validate</phase>
-            <goals>
-                <goal>check</goal>
-            </goals>
-            <configuration>
-                <failOnViolation>true</failOnViolation>
-                <minimumTokens>100</minimumTokens>
-            </configuration>
-        </execution>
-    </executions>
-</plugin>
+                    <execution>
+                        <id>pmd-check</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                        <configuration>
+                            <failOnViolation>true</failOnViolation>
+                            <minimumTokens>100</minimumTokens>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>com.github.spotbugs</groupId>
                 <artifactId>spotbugs-maven-plugin</artifactId>
@@ -196,8 +224,17 @@
                     <execution>
                         <id>spotbugs-client</id>
                         <phase>validate</phase>
-                        <goals><goal>check</goal></goals>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
                         <configuration>
+                        <classes>
+                                <class>${project.build.directory}/client-classes</class>
+                            </classes>
+                            <auxClasspath>
+                                <element>${project.build.directory}/client-classes</element>
+                                <element>${project.build.directory}/client-app-1.0.jar</element>
+                                </auxClasspath>
                             <classFilesDirectory>${project.build.directory}/client-classes</classFilesDirectory>
                             <failOnError>true</failOnError>
                             <xmlOutput>true</xmlOutput>
@@ -218,25 +255,59 @@
                     <execution>
                         <id>check-javadoc</id>
                         <phase>verify</phase>
-                        <goals><goal>jar</goal></goals>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
                         <configuration>
                             <sourcepath>${project.build.directory}/client-sources</sourcepath>
                             <failOnError>true</failOnError>
-                            <doclint>none</doclint>
+                           <doclint>all,-missing</doclint>  <!-- échoue si Javadoc manquant sur public/protected -->
                             <source>${maven.compiler.source}</source>
                             <encoding>UTF-8</encoding>
                         </configuration>
                     </execution>
                 </executions>
                 <dependencies>
-                    <dependency><groupId>org.projectlombok</groupId><artifactId>lombok</artifactId><version>1.18.30</version></dependency>
-                    <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-web</artifactId><version>3.2.0</version></dependency>
-                    <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-data-jpa</artifactId><version>3.2.0</version></dependency>
-                    <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-autoconfigure</artifactId><version>3.2.0</version></dependency>
-                    <dependency><groupId>org.springframework</groupId><artifactId>spring-context</artifactId><version>6.1.1</version></dependency>
-                    <dependency><groupId>org.springframework</groupId><artifactId>spring-beans</artifactId><version>6.1.1</version></dependency>
-                    <dependency><groupId>com.fasterxml.jackson.core</groupId><artifactId>jackson-annotations</artifactId><version>2.15.3</version></dependency>
-                    <dependency><groupId>jakarta.persistence</groupId><artifactId>jakarta.persistence-api</artifactId><version>3.1.0</version></dependency>
+                    <dependency>
+                        <groupId>org.projectlombok</groupId>
+                        <artifactId>lombok</artifactId>
+                        <version>1.18.30</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-starter-web</artifactId>
+                        <version>3.2.0</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-starter-data-jpa</artifactId>
+                        <version>3.2.0</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-autoconfigure</artifactId>
+                        <version>3.2.0</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-context</artifactId>
+                        <version>6.1.1</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-beans</artifactId>
+                        <version>6.1.1</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.fasterxml.jackson.core</groupId>
+                        <artifactId>jackson-annotations</artifactId>
+                        <version>2.15.3</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>jakarta.persistence</groupId>
+                        <artifactId>jakarta.persistence-api</artifactId>
+                        <version>3.1.0</version>
+                    </dependency>
                 </dependencies>
             </plugin>
         </plugins>
