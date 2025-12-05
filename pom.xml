@@ -223,7 +223,7 @@
                 <executions>
                     <execution>
                         <id>spotbugs-client</id>
-                        <phase>validate</phase>
+                        <phase>verify</phase>
                         <goals>
                             <goal>check</goal>
                         </goals>
@@ -231,10 +231,10 @@
                         <classes>
                                 <class>${project.build.directory}/client-classes</class>
                             </classes>
-                            <auxClasspath>
+                            <!-- <auxClasspath>
                                 <element>${project.build.directory}/client-classes</element>
                                 <element>${project.build.directory}/client-app-1.0.jar</element>
-                                </auxClasspath>
+                                </auxClasspath> -->
                             <classFilesDirectory>${project.build.directory}/client-classes</classFilesDirectory>
                             <failOnError>true</failOnError>
                             <xmlOutput>true</xmlOutput>
