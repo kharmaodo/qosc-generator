@@ -1,0 +1,1000 @@
+  223  // deleteUser('some-id');
+  224  // listUsers();
+  225  cls
+  226  cleat
+  227  clear
+  228  ls
+  229  nano client.js
+  230  node client.js
+  231  code .
+  232  node client.js
+  233  curl localhost:7777/healtz/
+  234  go doc log
+  235  curl localhost:7777/healtz/
+  236  curl localhost:7777/healtz
+  237  curl 127.0.0.1:7777/healtz
+  238  curl 127.0.0.1:7777/api
+  239  curl 127.0.0.1:7777/api | jq .
+  240  curl 127.0.0.1:7777/api | jq
+  241  curl 127.0.0.1:7777/api 
+  242  curl 127.0.0.1:7777/healtz
+  243  curl 127.0.0.1:7777/healthz
+  244  protoc
+  245  spring init --dependencies=grpc,protobuf,lombok --build=gradle grpc-user-server
+  246  spring init --dependencies=grpc,protobuf,lombok --build=gradle-project grpc-user-server
+  247  spring init --dependencies=lombok --build=gradle --name=grpc-user-server grpc-user-server
+  248  spring init --dependencies=lombok --build=gradle-project --name=grpc-user-server grpc-user-server
+  249  spring list
+  250  spring init --list
+  251  spring init --dependencies=lombok --build=gradle --name=grpc-user-server grpc-user-server
+  252  spring init --dependencies=lombok --build=gradle --name=grpc-user-server grpc-user-server --type=gradle-project
+  253  cd grpc-user-server/
+  254  dir
+  255  code .
+  256  ./gradlew clean build
+  257  clear
+  258  ./gradlew clean build
+  259  ./gradlew clean build --scan
+  260  explorer.exe .
+  261  ./gradlew clean build --scan
+  262  clear
+  263  ./gradlew clean build
+  264  mvn clean install
+  265  clear
+  266  mvn clean install
+  267  cat pom.xml | grep ".proto"
+  268  head pom.xml 
+  269  tail pom.xml 
+  270  more pom.xml 
+  271  clear
+  272  mvn clean compile
+  273  mvn eclipse:eclipse
+  274  mvn clean compile
+  275  clear
+  276  nano pom.xml 
+  277  mvn clean compile
+  278  rm -rf src/main/java/com/example/grpc_user_server
+  279  ls target/generated-sources/protobuf/java/com/example/users
+  280  mvn clean compile
+  281  mvn clean package
+  282  clear
+  283  mvn clean package
+  284  rm -rf src/test
+  285  mvn clean package
+  286  mkdir -p src/test/java/com/example/users
+  287  mv src/test/java/com/example/grpc_user_server/GrpcUserServerApplicationTests.java src/test/java/com/example/users/ApplicationTests.java
+  288  mvn clean package
+  289  mvn spring-boot:run
+  290  clear
+  291  mvn spring-boot:run
+  292  clear
+  293  mvn clean package
+  294  mvn spring-boot:run
+  295  mvn clean install
+  296  mvn clean
+  297  mvn clean install
+  298  mvn clean install -X
+  299  mvn clean package
+  300  mvn clean install -X
+  301  git status
+  302  git checkout -b feat/refactoring
+  303  git branch
+  304  git checkout -b feat/refactoring
+  305  git branch
+  306  git status
+  307  explorer.Exe . 
+  308  git diff pom.xml
+  309  explorer.Exe .
+  310  ls
+  311  code.
+  312  code .
+  313  cd ltx/
+  314  dir
+  315  code .
+  316  explorer.Exe .
+  317  lss
+  318  ls
+  319  xelatex ruwudu-example.tex
+  320  xelatex ruwudu-hadith.tex 
+  321  xelatex ruwudu-hadith-default.tex 
+  322  xelatex ruwudu-hadith-dawlawi.tex 
+  323  clear
+  324  xelatex ruwudu-hadith-dawlawi.tex 
+  325  cd ..
+  326  cd users-client/
+  327  code .
+  328  ant
+  329  cd ..
+  330  git clone https://github.com/apache/thrift.git
+  331  cd thrift/tutorial/java/
+  332  dir
+  333  ant
+  334  dpkg --print-architecture
+  335  cd ~
+  336  clear
+  337  mkdir tutorial_nginx
+  338  cd tutorial_nginx/
+  339  nano app.js
+  340  nano Dockerfile
+  341  docker run -d --name app1 -p 3001:3000 -e PORT=3000 my-app
+  342  bashdocker build -f Dockerfile.app -t my-app .
+  343  bashdocker build -f Dockerfile -t my-app .
+  344  docker build -f Dockerfile -t my-app .
+  345  docker run -d --name app1 -p 3001:3000 -e PORT=3000 my-app
+  346  docker run -d --name app2 -p 3002:3000 -e PORT=3000 my-app
+  347  docker run -d --name app3 -p 3003:3000 -e PORT=3000 my-app
+  348  nano Dockerfile.nginx
+  349  nano nginx.conf
+  350  mkdir certs
+  351  openssl req -x509 -nodes -days 365 -newkey rsa:2048   -keyout certs/key.pem -out certs/certs.pem   -subj "/CN=localhost"
+  352  docker build -t my-nginx .
+  353  dir
+  354  docker build -t my-nginx -f Dockerfile.nginx 
+  355  docker build -f Dockerfile.nginx  -t my-nginx
+  356  dir
+  357  docker build -f Dockerfile.nginx  -t my-nginx
+  358  docker build -f Dockerfile.nginx  -t my-nginx .
+  359  docker run -d --name nginx-lb -p 80:80 -p 443:443   -v $(pwd)/certs:/etc/nginx/certs   my-nginx
+  360  curl http://localhost
+  361  curl http://localhost:3000
+  362  curl http://localhost
+  363  dir
+  364  docker network create mon-reseau
+  365  docker network connect mon-reseau app1
+  366  docker network connect mon-reseau app2
+  367  docker network connect mon-reseau app3
+  368  docker run -d --name nginx-lb   --network mon-reseau   -p 80:80   -v $(pwd)/nginx-config/nginx.conf:/etc/nginx/nginx.conf:ro   nginx:alpine
+  369  docker rm -f nginx-lb
+  370  docker run -d --name nginx-lb   --network mon-reseau   -p 80:80   -v $(pwdpwd
+  371  uname -a
+  372  cd ~
+  373  pwd
+  374  cd /tmp
+  375  ls
+  376  cd ~
+  377  history
+  378  cd /tmp/test/server_auth/
+  379  code .
+  380  cd ..
+  381  dir
+  382  cd generated/
+  383  code .
+  384  cd ..
+  385  dir
+  386  cd generated/
+  387  dir
+  388  cd openapi-client/
+  389  code .
+  390  cd ..
+  391  dir
+  392  cd openapi-client/
+  393  code .
+  394  ls
+  395  git remote -v
+  396  code .
+  397  git init
+  398  git remote add origin https://github.com/kharmaodo/openapi-client.git
+  399  git log
+  400  git status
+  401  cat .travis.yml 
+  402  cat .gitignore 
+  403  git add .
+  404  git status
+  405  git commit -m"feat: initial commit"
+  406  mvn test
+  407  mvn clean install -DskipTests
+  408  explorer.Exe .
+  409  cd ..
+  410  ls
+  411  cd ..
+  412  dir
+  413  cd client_poc/
+  414  code .
+  415  cd ..
+  416  cd generated/
+  417  dir
+  418  cd openapi-client/
+  419  code .
+  420  exit
+  421  history 
+  422  clear
+  423  cd /tmp/test/
+  424  cd client/
+  425  code .
+  426  man date
+  427  sudo apt install manpages-dev
+  428  man date
+  429  apt-get install manpages-posix-dev
+  430  sudo apt-get install manpages-posix-dev
+  431  man date
+  432  sudo apt-get install manpages-es-extra
+  433  curl -X GET "http://172.19.143.233:4010/comptes/ipsum"      -H "Accept: application/json"      -H "Authorization: Bearer faketoken123"
+  434  curl --location 'http://localhost:8080/aliases/CIC2344256727788288822' --header 'Content-Type: application/json' --header 'Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpbmRpY2VDbGllbnQiOiIwMDA2Mjg5IiwiaWRlbnRpZmlhbnQiOiJCRjAwMDYyODkiLCJpZEFib25uZSI6ImY1NjU0NzVlLTQ1MjUtNDM1MS1hZDhiLTM4YjMyYWNjZWRjMiIsInRva2VuVHlwZSI6ImFjY2VzcyIsInN1YiI6IkJGMDAwNjI4OSIsImlhdCI6MTc2MjM1ODk1NiwiZXhwIjoxNzYyMzYyNTU2fQ.AO2iQBx_dGfMHg6EzQe7Fhff5oTVY1p-ZSi14xTcOBdajlHmNnUJbLPPXTCmdu5WYnoVyVSMEWycrRsWj-Nyfg' --data '{
+  435      "type": "MCOD"
+  436  }'
+  437  curl --location 'http://172.19.143.233:4010/comptes/aperiam/alias' -H "Accept: application/json"  -H "Authorization: Bearer faketoken123"  --data '{"type":"MCOD"}'| jq
+  438  curl --location 'http://localhost:4010/comptes/aperiam/alias' -H "Accept: application/json"  -H "Authorization: Bearer faketoken123"  --data '{"type":"MCOD"}'| jq
+  439  curl -X POST 'http://localhost:4010/comptes/aperiam/alias' -H "Accept: application/json"  -H "Authorization: Bearer faketoken123"  --data '{"type":"MCOD"}'| jq
+  440  curl --location 'http://172.19.143.233:4010/comptes/aperiam/alias' --header 'Content-Type: application/json' --header 'Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpbmRpY2VDbGllbnQiOiIwMDA2Mjg5IiwiaWRlbnRpZmlhbnQiOiJCRjAwMDYyODkiLCJpZEFib25uZSI6ImY1NjU0NzVlLTQ1MjUtNDM1MS1hZDhiLTM4YjMyYWNjZWRjMiIsInRva2VuVHlwZSI6ImFjY2VzcyIsInN1YiI6IkJGMDAwNjI4OSIsImlhdCI6MTc2MjM1ODk1NiwiZXhwIjoxNzYyMzYyNTU2fQ.AO2iQBx_dGfMHg6EzQe7Fhff5oTVY1p-ZSi14xTcOBdajlHmNnUJbLPPXTCmdu5WYnoVyVSMEWycrRsWj-Nyfg' --data '{
+  441      "type": "MCOD"
+  442  }'
+  443  curl --location 'http://172.19.143.233:4010/comptes/aperiam/alias' --header 'Content-Type: application/json' --header 'Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpbmRpY2VDbGllbnQiOiIwMDA2Mjg5IiwiaWRlbnRpZmlhbnQiOiJCRjAwMDYyODkiLCJpZEFib25uZSI6ImY1NjU0NzVlLTQ1MjUtNDM1MS1hZDhiLTM4YjMyYWNjZWRjMiIsInRva2VuVHlwZSI6ImFjY2VzcyIsInN1YiI6IkJGMDAwNjI4OSIsImlhdCI6MTc2MjM1ODk1NiwiZXhwIjoxNzYyMzYyNTU2fQ.AO2iQBx_dGfMHg6EzQe7Fhff5oTVY1p-ZSi14xTcOBdajlHmNnUJbLPPXTCmdu5WYnoVyVSMEWycrRsWj-Nyfg' --data '{
+  444      "type": "MCOD"
+  445  }' | jq
+  446  clear
+  447  npx @openapitools/openapi-generator-cli config-help -g java
+  448  clear
+  449  npx @openapitools/openapi-generator-cli config-help -g spring
+  450  ls
+  451  code .
+  452  dir
+  453  code .
+  454  cd ..
+  455  dir
+  456  cd ..
+  457  exit
+  458  ls
+  459  cd openapibusiness/
+  460  history
+  461  ls
+  462  npx @openapitools/openapi-generator-cli generate -i first_auth.json  -g spring -o /tmp/test/client --additional-properties=library=spring-boot,artifactId=my-api-client,java11=true,useJakartaEe=true
+  463  explorer.Exe .
+  464  npx @openapitools/openapi-generator-cli generate -i api.json -g java -o /tmp/test/client --additional-properties=library=resttemplate,artifactId=my-api-client, java11=true, useJakartaEe=true
+  465  npx @openapitools/openapi-generator-cli generate -i first_auth.json  -g spring -o /tmp/test/server_auth ,--additional-properties=library=spring-boot,interfaceOnly=false,beanValidations=true,serviceImplementation=true,artifactId=my-api-server,java8=true,useTags=true,delegatePattern=true,returnSuccessCode=true,hideGenerationTimestamp=true,generateBuilders=true,generateConstructorWithAllArgs=true,generateGenericResponseEntity=true,performBeanValidation=true,serializableModel=true,unhandledException=true,useSpringBoot3=true,useSpringBuiltInValidation=true,useSpringController=true,java11=true,useJakartaEe=true,skipDefaultInterface=true
+  466  npx @openapitools/openapi-generator-cli generate   -i api.json   -g spring   -o /tmp/test/server_auth   --additional-properties=library=spring-boot,interfaceOnly=true,beanValidations=true,serviceImplementation=true,artifactId=my-api-server,java8=true,useTags=true,delegatePattern=true,returnSuccessCode=true,hideGenerationTimestamp=true,serializableModel=true,unhandledException=true,useSpringBoot3=true,useSpringBuiltInValidation=true,useSpringController=true,java11=true,useJakartaEe=true
+  467  npx @openapitools/openapi-generator-cli generate -i first_auth.json  -g spring -o /tmp/test/client --additional-properties=library=spring-boot,artifactId=my-api-client,java11=true,useJakartaEe=true
+  468  npx @openapitools/openapi-generator-cli generate -i api.json -g spring -o /tmp/test/client --additional-properties=library=spring-boot,artifactId=my-api-client,java11=true,useJakartaEe=true
+  469  npx @openapitools/openapi-generator-cli generate -i api.json -g java -o /tmp/test/client --additional-properties=library=resttemplate,artifactId=my-api-client, java11=true, useJakartaEe=true
+  470  npx @openapitools/openapi-generator-cli generate -i api.json -g java -o /tmp/test/client --additional-properties=library=resttemplate,artifactId=my-api-client, java11=true
+  471  npx @openapitools/openapi-generator-cli generate -i api.json -g java -o /tmp/test/client --additional-properties=library=resttemplate,artifactId=my-api-client
+  472  npx @openapitools/openapi-generator-cli generate -i api.json -g java -o /tmp/test/client --additional-properties=library=resttemplate,spring-boot,artifactId=my-api-client, java11=true
+  473  npx @openapitools/openapi-generator-cli generate -i api.json -g java -o /tmp/test/client --additional-properties=library=resttemplate,spring-boot,artifactId=my-api-client
+  474  clear
+  475  npx @openapitools/openapi-generator-cli generate -i api.json -g spring -o /tmp/test/client --additional-properties=library=resttemplate,spring-boot,artifactId=my-api-client, ,useJakartaEe=true
+  476  npx @openapitools/openapi-generator-cli generate -i api.json -g spring -o /tmp/test/client --additional-properties=library=resttemplate,spring-boot,artifactId=my-api-client,useJakartaEe=true
+  477  npx @openapitools/openapi-generator-cli generate -i api.json -g spring -o /tmp/test/client --additional-properties=library=spring-boot,artifactId=my-api-client,useJakartaEe=true
+  478  sudo rm -rf /tmp/test
+  479  npx @openapitools/openapi-generator-cli generate   -i api.json   -g spring   -o /tmp/test/client   --additional-properties=library=resttemplate,artifactId=my-api-client,apiPackage=com.example.client.api,modelPackage=com.example.client.model,invokerPackage=com.example.client.invoker,useJakartaEe=true,springBootVersion=3.0.0,dateLibrary=java8
+  480  npx @openapitools/openapi-generator-cli generate   -i api.json   -g java   -o /tmp/test/client   --additional-properties=library=resttemplate,artifactId=my-api-client,apiPackage=com.example.client.api,modelPackage=com.example.client.model,invokerPackage=com.example.client.invoker,useJakartaEe=true,dateLibrary=java8
+  481  ls
+  482  npx @openapitools/openapi-generator-cli generate   -i api.json   -g spring   -o /tmp/test/server_auth   --additional-properties=library=spring-boot,interfaceOnly=true,beanValidations=true,serviceImplementation=true,artifactId=my-api-server,java8=true,useTags=true,delegatePattern=true,returnSuccessCode=true,hideGenerationTimestamp=true,serializableModel=true,unhandledException=true,useSpringBoot3=true,useSpringBuiltInValidation=true,useSpringController=true,java11=true,useJakartaEe=true
+  483  npx @openapitools/openapi-generator-cli generate -i first_auth.json  -g spring -o /tmp/test/client --additional-properties=library=spring-boot,artifactId=my-api-client,java11=true,useJakartaEe=true
+  484  npx @openapitools/openapi-generator-cli generate   -i first_auth.json  -g java   -o /tmp/test/client   --additional-properties=library=resttemplate,artifactId=my-api-client,apiPackage=com.example.client.api,modelPackage=com.example.client.model,invokerPackage=com.example.client.invoker,useJakartaEe=true,dateLibrary=java8
+  485  npx @openapitools/openapi-generator-cli generate   -i api.json  -g java   -o /tmp/test/client   --additional-properties=library=resttemplate,artifactId=my-api-client,apiPackage=com.example.client.api,modelPackage=com.example.client.model,invokerPackage=com.example.client.invoker,useJakartaEe=true,dateLibrary=java8
+  486  npx @openapitools/openapi-generator-cli config-help -g java
+  487  npx @openapitools/openapi-generator-cli config-help -g spring
+  488  clear
+  489  npx @openapitools/openapi-generator-cli config-help -g spring
+  490  clear
+  491  npx @openapitools/openapi-generator-cli generate   -i api.json   -g java   -o /tmp/test/client_consume   --additional-properties=library=resttemplate,artifactId=consume-openapi,apiPackage=sn.consummer.consume_openapi.api,modelPackage=sn.consummer.consume_openapi.model,invokerPackage=sn.consummer.consume_openapi.invoker,useJakartaEe=true,dateLibrary=java8
+  492  ls
+  493  npx @openapitools/openapi-generator-cli generate   -i first_auth.json   -g java   -o /tmp/test/client_consume   --additional-properties=library=resttemplate,artifactId=consume-openapi,apiPackage=sn.consummer.consume_openapi.api,modelPackage=sn.consummer.consume_openapi.model,invokerPackage=sn.consummer.consume_openapi.invoker,useJakartaEe=true,dateLibrary=java8
+  494  npx @openapitools/openapi-generator-cli generate   -i first_auth.json   -g java   -o /tmp/test/client_poc   --additional-properties=library=resttemplate,artifactId=my-api-client,apiPackage=com.example.client.api,modelPackage=com.example.client.model,invokerPackage=com.example.client.invoker,useJakartaEe=true,dateLibrary=java8
+  495  pwd
+  496  history
+  497  history >> myhistory.txt
+  498  explorer.exe .
+  499  npx @openapitools/openapi-generator-cli generate   -i api.json   -g spring   -o /tmp/test/server_auth --additional-properties=library=spring-boot,interfaceOnly=true,beanValidations=true,serviceImplementation=true,artifactId=my-api-server,useTags=true,delegatePattern=true,returnSuccessCode=true,hideGenerationTimestamp=true,serializableModel=true,unhandledException=true,useSpringBoot3=true,useSpringBuiltInValidation=true,useSpringController=true,java11=true,useJakartaEe=true,generateGenericResponseEntity=true,modelPackage=sn.poc.model,serializableModel=true,useOptional=true,useSpringBuiltInValidation=true,useSpringController=true,useTags=true
+  500  npx @openapitools/openapi-generator-cli generate   -i api.json   -g java   -o /tmp/test/server_auth --additional-properties=library=resttemplate,interfaceOnly=true,beanValidations=true,serviceImplementation=true,artifactId=my-api-server,useTags=true,delegatePattern=true,returnSuccessCode=true,hideGenerationTimestamp=true,serializableModel=true,unhandledException=true,useSpringBoot3=true,useSpringBuiltInValidation=true,useSpringController=true,java11=true,useJakartaEe=true,generateGenericResponseEntity=true,modelPackage=sn.poc.model,serializableModel=true,useOptional=true,useSpringBuiltInValidation=true,useSpringController=true,useTags=true
+  501  dir
+  502  npx @openapitools/openapi-generator-cli generate   -i api.json   -g spring   -o /temp/test/generated/openapi-client   --additional-properties=groupId=com.example,artifactId=openapi-client,artifactVersion=1.0.0,library=spring-boot,useSpringBoot3=true,useWebClient=true,dateLibrary=java8,java8=true,hideGenerationTimestamp=true,interfaceOnly=false,serializableModel=true,unhandledException=true,beanValidations=true,generateSupportingFiles=true,useTags=true,delegatePattern=false,useOptional=true,title=OpenApiClient,useJakartaEe=true,configPackage=com.example.openapi.configuration,apiPackage=com.example.openapi.api,modelPackage=com.example.openapi.model,invokerPackage=com.example.openapi.invoker,performBeanValidation=true,generateApiTests=true,generateModelTests=true,documentationProvider=source,basePackage=com.example.openapi,returnSuccessCode=true,artifactDescription="Spring Boot WebClient OpenAPI client with config and tests"   --global-property models,apis,supportingFiles,modelDocs,apiDocs,apiTests,modelTests,readme
+  503  npx @openapitools/openapi-generator-cli generate   -i api.json   -g spring   -o /temp/test/generated/openapi-client   --additional-properties=groupId=com.example,artifactId=openapi-client,artifactVersion=1.0.0,library=spring-boot,useSpringBoot3=true,useWebClient=true,dateLibrary=java8,java8=true,hideGenerationTimestamp=true,interfaceOnly=false,serializableModel=true,unhandledException=true,beanValidations=true,generateSupportingFiles=true,useTags=true,delegatePattern=false,useOptional=true,title=OpenApiClient,useJakartaEe=true,configPackage=com.example.openapi.configuration,apiPackage=com.example.openapi.api,modelPackage=com.example.openapi.model,invokerPackage=com.example.openapi.invoker,performBeanValidation=true,generateApiTests=true,generateModelTests=true,documentationProvider=source,basePackage=com.example.openapi,returnSuccessCode=true,artifactDescription='Spring_Boot_WebClient_OpenAPI_client_with_config_and_tests'   --global-property=models,apis,supportingFiles,modelDocs,apiDocs,apiTests,modelTests,readme
+  504  npx @openapitools/openapi-generator-cli generate   -i api.json   -g spring   -o /tmp/test/generated/openapi-client   --additional-properties=groupId=com.example,artifactId=openapi-client,artifactVersion=1.0.0,library=spring-boot,useSpringBoot3=true,useWebClient=true,dateLibrary=java8,java8=true,hideGenerationTimestamp=true,interfaceOnly=false,serializableModel=true,unhandledException=true,beanValidations=true,generateSupportingFiles=true,useTags=true,delegatePattern=false,useOptional=true,title=OpenApiClient,useJakartaEe=true,configPackage=com.example.openapi.configuration,apiPackage=com.example.openapi.api,modelPackage=com.example.openapi.model,invokerPackage=com.example.openapi.invoker,performBeanValidation=true,generateApiTests=true,generateModelTests=true,documentationProvider=source,basePackage=com.example.openapi,returnSuccessCode=true,artifactDescription='Spring_Boot_WebClient_OpenAPI_client_with_config_and_tests'   --global-property=models,apis,supportingFiles,modelDocs,apiDocs,apiTests,modelTests,readme
+  505  npx @openapitools/openapi-generator-cli generate   -i api.json   -g spring    -o /tmp/test/generated/openapi-client   --additional-properties=groupId=com.example,artifactId=openapi-client,artifactVersion=1.0.0,library=spring-boot,useSpringBoot3=true,useWebClient=true,dateLibrary=java8,java8=true,hideGenerationTimestamp=true,interfaceOnly=false,serializableModel=true,unhandledException=true,beanValidations=true,generateSupportingFiles=true,useTags=true,delegatePattern=false,useOptional=true,title=OpenApiClient,useJakartaEe=true,configPackage=com.example.openapi.configuration,apiPackage=com.example.openapi.api,modelPackage=com.example.openapi.model,invokerPackage=com.example.openapi.invoker,basePackage=com.example.openapi,performBeanValidation=true,generateApiTests=true,generateModelTests=true,documentationProvider=source,returnSuccessCode=true,artifactDescription='Spring_Boot_WebClient_OpenAPI_client_with_config_and_tests'   --global-property=models,apis,supportingFiles,modelDocs,apiDocs,apiTests,modelTests,readme
+  506  npx @openapitools/openapi-generator-cli generate   -i api.json   -g spring    -o /tmp/test/generated/openapi-client   --additional-properties=groupId=com.example,artifactId=openapi-client,artifactVersion=1.0.0,library=webclient,useSpringBoot3=true,useWebClient=true,dateLibrary=java8,java8=true,hideGenerationTimestamp=true,interfaceOnly=false,serializableModel=true,unhandledException=true,beanValidations=true,generateSupportingFiles=true,useTags=true,delegatePattern=false,useOptional=true,title=OpenApiClient,useJakartaEe=true,configPackage=com.example.openapi.configuration,apiPackage=com.example.openapi.api,modelPackage=com.example.openapi.model,invokerPackage=com.example.openapi.invoker,basePackage=com.example.openapi,performBeanValidation=true,generateApiTests=true,generateModelTests=true,documentationProvider=source,returnSuccessCode=true,artifactDescription='Spring_Boot_WebClient_OpenAPI_client_with_config_and_tests'   --global-property=models,apis,supportingFiles,modelDocs,apiDocs,apiTests,modelTests,readme
+  507  npx @openapitools/openapi-generator-cli generate   -i api.json   -g java    -o /tmp/test/generated/openapi-client   --additional-properties=groupId=com.example,artifactId=openapi-client,artifactVersion=1.0.0,library=webclient,useSpringBoot3=true,useWebClient=true,dateLibrary=java8,java8=true,hideGenerationTimestamp=true,interfaceOnly=false,serializableModel=true,unhandledException=true,beanValidations=true,generateSupportingFiles=true,useTags=true,delegatePattern=false,useOptional=true,title=OpenApiClient,useJakartaEe=true,configPackage=com.example.openapi.configuration,apiPackage=com.example.openapi.api,modelPackage=com.example.openapi.model,invokerPackage=com.example.openapi.invoker,basePackage=com.example.openapi,performBeanValidation=true,generateApiTests=true,generateModelTests=true,documentationProvider=source,returnSuccessCode=true,artifactDescription='Spring_Boot_WebClient_OpenAPI_client_with_config_and_tests'   --global-property=models,apis,supportingFiles,modelDocs,apiDocs,apiTests,modelTests,readme
+  508  ls
+  509  cat api.json 
+  510  ls
+  511  cat start-prism.sh 
+  512  cat first_auth.json 
+  513  dir
+  514  cat openapitools.json 
+  515  dir
+  516  pwd
+  517  cd ..
+  518  dir
+  519  ls -al
+  520  cd pay-publicapi/
+  521  dir
+  522  code .
+  523  git status
+  524  git remote -v
+  525  cd ..
+  526  dir
+  527  cd mockserver/
+  528  dir
+  529  cat db.js 
+  530  code .
+  531  dir
+  532  cd ..
+  533  ls -alh
+  534  cd openapibusiness/
+  535  dir
+  536  cd ../demo-openapi-first/
+  537  code .
+  538  cd ..
+  539  rm -rf demo-openapi-first
+  540  clear
+  541  ls -alh
+  542  code .
+  543  ls -alh
+  544  explorer.exe .
+  545  cd grpc-user-server/
+  546  git branch
+  547  cd ..
+  548  mkdir grpc-tutorial
+  549  mv grpc-user-server/ grpc-tutorial/
+  550  mv users-client/ grpc-tutorial/
+  551  cd grpc-tutorial/
+  552  code .
+  553  git init
+  554  git status
+  555  git add .
+  556  git status
+  557  git add .
+  558  git status
+  559  ls -alh
+  560  git add .
+  561  git status
+  562  cd users-client/
+  563  npm prune
+  564  git add .
+  565  git status
+  566  git commit -m"feat: finalize grpc client(nodejs)/server(springboot)"
+  567  git status
+  568  git rm -r --cached grpc-user-server/target
+  569  git rm -r --cached users-client/node_modules
+  570  git commit -m "Remove ignored build dirs"
+  571  git add .
+  572  git commit -m "Remove ignored build dirs"
+  573  git status
+  574  git add .
+  575  git status
+  576  git remote add origin https://github.com/kharmaodo/grpc-tutorial.git
+  577  git branch
+  578  git checkout main
+  579  git checkout -b main
+  580  git lg
+  581  git log
+  582  git branch -M main
+  583  git push -u origin main
+  584  git merge develop
+  585  git rm -r --cached grpc-user-server/target
+  586  dir
+  587  cd ..
+  588  git rm -r --cached grpc-user-server/target
+  589  git rm -r --cached users-client/node_modules
+  590  dir
+  591  git status
+  592  git add .
+  593  git commit -m "Remove ignored build dirs"
+  594  git push
+  595  git log
+  596  exit
+  597  grpcurl --v
+  598  grpcurl -help
+  599  clear
+  600  history | grep grpcurl
+  601  grpcurl -plaintext localhost:9090 list
+  602  grpcurl -plaintext -d '{"first_name": "Morlay", "last_name": "Cisse", "age": 30, "email": "john@example.com"}' localhost:9090 Users/CreateUser
+  603  pwd
+  604  cd architecture-best-pratices
+  605  git status
+  606  git add .
+  607  git status
+  608  git commit -m"feat:wip"
+  609  mvn clean install
+  610  cat pom.xml | grep "COVEREDRATIO"
+  611  explorer.exe .
+  612  mvn clean install
+  613  history 
+  614  mvn clean install -Dspotless.check.skip=true
+  615  mvn clean install -Dspotless.check.skip=true -Dspotbugs.skip=true.
+  616  mvn clean install -Dspotless.check.skip=true -Dspotbugs.skip=true
+  617  clear
+  618  mvn clean install -Dspotless.check.skip=true -Dspotbugs.skip=true -Ddependency-check.skip=true
+  619  mvn clean install -Dspotless.check.skip=true -Dspotbugs.skip=true -Ddependency-check.skip=true -Dpmd.skip=true
+  620  clear
+  621  mvn clean install -Dspotless.check.skip=true -Dspotbugs.skip=true -Ddependency-check.skip=true -Dpmd.skip=true -Darchunit.skip=true
+  622  mvn clean install -Dspotless.check.skip=true -Dspotbugs.skip=true -Ddependency-check.skip=true -Dpmd.skip=true -Dqulice.skip=true
+  623  git status
+  624  git add .
+  625  git status
+  626  git branch
+  627  git commit -m"feat:wip"
+  628  cat .git/hooks/pre-commit
+  629  start notepad++ .git/hooks/pre-commit
+  630  nano .git/hooks/pre-commit
+  631  git status
+  632  git add .
+  633  git commit -m"feat:wip"
+  634  git lg
+  635  git log
+  636  git branch
+  637  git checkout -b main
+  638  git branch
+  639  git remote add origin https://github.com/kharmaodo/architecture-best-pratices.git
+  640  git branch -M main
+  641  git push -u origin main
+  642  git config list
+  643  git push -u origin main
+  644  git credential reject
+  645  git credential
+  646  git credential reject
+  647  git log
+  648  git remote -v
+  649  git pull
+  650  git push -u origin main
+  651  git status
+  652  git add .
+  653  git commit -m"fix: ci"
+  654  git push
+  655  git commit -m"fix: ci"
+  656  git add .
+  657  git commit -m"fix: ci"
+  658  git push
+  659  mvn -B clean install -Dspotless.check.skip=true -Dspotbugs.skip=true -Ddependency-check.skip=true -Dpmd.skip=true -Dqulice.skip=true
+  660  git pull
+  661  git config --list --show-origin
+  662  git branch
+  663  git checkout develop
+  664  git -vv
+  665  git branch -vv
+  666  git merge main
+  667  git branch -vv
+  668  git branch
+  669  git push
+  670  git push --set-upstream origin develop
+  671  cd /home/dmaodo/openapibusiness
+  672  prism mock api.json 
+  673  hostname -I
+  674  prism mock api.json prism mock api.yaml -h 0.0.0.0 -p 4010
+  675  prism mock api.yaml -h 0.0.0.0 -p 4010
+  676  prism mock api.json -h 0.0.0.0 -p 4010
+  677  ls
+  678  prism mock api.json -h 0.0.0.0 -p 4010
+  679  sh stop-prism.sh 
+  680  prism mock api.json -h 0.0.0.0 -p 4010
+  681  netstat -an | grep 4010
+  682  cat stop-prism.sh 
+  683  PID=$(netstat -tulpn 2>/dev/null | grep :4010 | awk '{print $7}' | cut -d'/' -f1)
+  684  $PID
+  685  echo $PID
+  686  kimm -9 $PID
+  687  kill -9 $PID
+  688  PID=$(netstat -tulpn 2>/dev/null | grep :4010 | awk '{print $7}' | cut -d'/' -f1)
+  689  kill -9 $PID
+  690  prism mock api.json -h 0.0.0.0 -p 4010
+  691  cd /tmp/
+  692  cd test/
+  693  dir
+  694  cd client_
+  695  cd client_poc/
+  696  code . 
+  697  cd ..
+  698  ls
+  699  cd client_consume/
+  700  code .
+  701  ls
+  702  cd ..
+  703  ls
+  704  cd client
+  705  dir
+  706  cd ..
+  707  cd client_consume/
+  708  explorer.exe .
+  709  cd ..
+  710  cd client
+  711  code .
+  712  cd ~
+  713  ls
+  714  cd architecture-best-pratices/
+  715  code .
+  716  cd target/
+  717  cd ..
+  718  cd tmp
+  719  cd ~
+  720  ls
+  721  cd tmp/
+  722  dir
+  723  cd ..
+  724  rm -rf node_modules tmp
+  725  ls
+  726  mvn archetype:generate -DarchetypeCatalog=local
+  727  go -v
+  728  git clone https://github.com/kharmaodo/archetype-cli
+  729  cd archetype-cli/
+  730  go mod init git clone https://github.com/kharmaodo/archetype-cli
+  731  go mod init github.com/kharmaodo/archetype-cli
+  732  mkdir factory
+  733  touch main.go
+  734  nano main.go 
+  735  code .
+  736  explorer.exe .
+  737  GOOS=linux GOARCH=amd64 go build -o archetype-cli main.go
+  738  ls
+  739  ./archetype-cli 
+  740  ls
+  741  GOOS=linux GOARCH=amd64 go build -o archetype-cli main.go
+  742  ./archetype-cli 
+  743  dir
+  744  cd pi-zb/
+  745  mvn spring-boot:run
+  746  dir
+  747  mvn clean
+  748  mvvn spring-boot:run
+  749  mvn spring-boot:run
+  750  mvn spring-boot:run -X
+  751  cd ..
+  752  clear
+  753  GOOS=linux GOARCH=amd64 go build -o archetype-cli main.go
+  754  ./archetype-cli 
+  755  cd pi-zb/
+  756  mvn install
+  757  mvn clean install
+  758  mvn spring-boo:run
+  759  mvn spring-boot:run
+  760  cd ..
+  761  ls
+  762  GOOS=linux GOARCH=amd64 go build -o archetype-cli main.go
+  763  ./archetype-cli 
+  764  cd pi-zb/
+  765  mvn clean install
+  766  java -version
+  767  mvn clean install
+  768  cd ..
+  769  clear
+  770  GOOS=linux GOARCH=amd64 go build -o archetype-cli main.go
+  771  ./archetype-cli 
+  772  cd pi-zb/
+  773  mvn clean install
+  774  mvn spring-boot:run
+  775  cd ..
+  776  rm -rf pi-zb/
+  777  git status
+  778  touch README.md
+  779  git status
+  780  git add .
+  781  git commit -m"feat: starterkit"
+  782  git push
+  783  explorer.exe .
+  784  git branch
+  785  git checkout -b feat/steps
+  786  code .
+  787  GOOS=linux GOARCH=amd64 go build -o archetype-cli main.go
+  788  ./archetype-cli 
+  789  mvn archetype:generate -DarchetypeCatalog=local
+  790  git status
+  791  GOOS=linux GOARCH=amd64 go build -o archetype-cli main.go
+  792  ./archetype-cli 
+  793  clear
+  794  GOOS=linux GOARCH=amd64 go build -o archetype-cli main.go
+  795  ./archetype-cli 
+  796  GOOS=linux GOARCH=amd64 go build -o archetype-cli main.go
+  797  ./archetype-cli 
+  798  ./archetype-cli  --install
+  799  ./archetype-cli  --install --test
+  800  clear
+  801  GOOS=linux GOARCH=amd64 go build -o archetype-cli main.go
+  802  ./archetype-cli
+  803  ./archetype-cli --install
+  804  ./archetype-cli --install --test
+  805  ./archetype-cli --install --custom
+  806  ./archetype-cli
+  807  GOOS=linux GOARCH=amd64 go build -o archetype-cli main.go
+  808  clear
+  809  ./archetype-cli
+  810  ./archetype-cli --install
+  811  ./archetype-cli --install --test
+  812  ./archetype-cli --install --custom
+  813  clear
+  814  GOOS=linux GOARCH=amd64 go build -o archetype-cli main.go
+  815  ./archetype-cli
+  816  ./archetype-cli --install
+  817  ./archetype-cli --install --test
+  818  ./archetype-cli --install --custom
+  819  git status
+  820  git add .
+  821  git status
+  822  git commit -m"feat: feature"
+  823  git branch
+  824  git checkout -b feat/steps2
+  825  ./archetype-cli --install --test
+  826  GOOS=linux GOARCH=amd64 go build -o archetype-cli main.go
+  827  ./archetype-cli --install
+  828  ./archetype-cli --install --test
+  829  ./archetype-cli --test
+  830  ./archetype-cli --custom
+  831  cd atos-kk/
+  832  mvn verify
+  833  vf
+  834  cd ..
+  835  git status
+  836  rm -rf atos-kk pi-zb 
+  837  git status
+  838  git add .
+  839  git commit -m"fix: already generated"
+  840  git branch
+  841  git checkout feat/steps
+  842  git merge feat/steps2
+  843  git checkout main
+  844  git checkout feat/steps
+  845  explorer.Exe .
+  846  ls -alh
+  847  ./archetype-cli --h
+  848  ./archetype-cli -h
+  849  GOOS=linux GOARCH=amd64 go build -o archetype-cli main.go
+  850  ./archetype-cli --h
+  851  git branch
+  852  git diff
+  853  ./archetype-cli --h
+  854  GOOS=linux GOARCH=amd64 go build -o archetype-cli main.go
+  855  ./archetype-cli --h
+  856  git stash
+  857  git branch
+  858  git checkout main
+  859  git branch --unset-upstream
+  860  git branch 
+  861  git pull
+  862  git pull origin main
+  863  GOOS=linux GOARCH=amd64 go build -o archetype-cli main.go
+  864  ./archetype-cli --h
+  865  mvn archetype:generate -DarchetypeCatalog=local
+  866  mvn archetype:generate -DarchetypeCatalog=local | grep votreorganisation
+  867  git branch
+  868  git checkout -b feat/config
+  869  code .
+  870  GOOS=linux GOARCH=amd64 go build -o archetype-cli main.go
+  871  ./archetype-cli --h
+  872  GOOS=linux GOARCH=amd64 go build -o archetype-cli main.go
+  873  ./archetype-cli --h
+  874  GOOS=linux GOARCH=amd64 go build -o archetype-cli main.go
+  875  ./archetype-cli --install
+  876  git status
+  877  git diff
+  878  explorer.Exe .
+  879  git pull
+  880  git branch
+  881  git checkout main
+  882  git pull
+  883  git pull origin main
+  884  git stash
+  885  git pull origin main
+  886  git status
+  887  git  rm config.json 
+  888  rm -rf config.json 
+  889  git stsh
+  890  git stash
+  891  git pull origin main
+  892  ls -al
+  893  rm -rf  ''$'\001\240\252''G@'$'\220\001''@8'$'\006''@'$'\032\027\006\004''@@@@@P'$'\001''P'$'\001\020\004\004''x'$'\017''x'$'\017''@x'$'\017''@dd'$'\004\001\005''@@Q'$'\243\017''Q'$'\243\017\020\001\004\260\017\260''O'$'\260''O'$'\036\022\020\001\006\320''!'$'\320''a'$'\320''a'$'\353\300''?'$'\004\020''Q'$'\345''td'$'\006\b\001\001\006\020''@'$'\020''Q'$'\223\017'
+  894  git status
+  895  explorer.exe .
+  896  cd ..
+  897  ls
+  898  mvn archetype:generate -DgroupId=com.audit.qosc -DartifactId=qosc-generator -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+  899  cd qosc-generator
+  900  code .
+  901  cp ../archetype-cli/factory/usine.jar  lib/
+  902  git init
+  903  git status
+  904  git add .
+  905  git commit -m"feat: initializing"
+  906  git diff
+  907  git add .
+  908  git commit -m"feat: add dependance & spotbugs"
+  909  git add .
+  910  git commit -m"feat: reporting"
+  911  mvn clean install site
+  912  explorer.exe .
+  913  mvn clean install site
+  914  mvn clean site
+  915  mkdir src/main/resources
+  916  mvn clean site
+  917  git status
+  918  nano .gitignore
+  919  git status
+  920  git add .
+  921  git status
+  922  git commit -m"feat: wip"
+  923  mvn clean site
+  924  clear
+  925  mvn clean
+  926  mvn clean site
+  927  git add .
+  928  git status
+  929  git commit -m"feat: wip"
+  930  mvn clean site
+  931  mvn verify
+  932  mvn clean install site
+  933  git diff
+  934  git add .
+  935  git commit -m"fix: wip"
+  936  git status
+  937  mv usine.jar  lib/
+  938  cd lib/
+  939  ls
+  940  rm -rf usine/
+  941  ls
+  942  cd ..
+  943  mvn clean install site
+  944  explorer.exe .
+  945  clear
+  946  mvn clean install site
+  947  git status
+  948  git add .
+  949  git commit -m"fix:wip"
+  950  mvn clean install site
+  951  git add .
+  952  git status
+  953  git commit -m"fix:wip"
+  954  mvn clean install site
+  955  clear
+  956  mvn clean install site
+  957  clear
+  958  mvn clean install site
+  959  -mvn clean validate
+  960  mvn clean validate
+  961  mvn install:install-file   -DgroupId=com.client   -DartifactId=client-app   -Dversion=1.0   -Dpackaging=jar   -Dfile=lib/usine.jar
+  962  mvn clean validate
+  963  mvn clean verify
+  964  mvn clean validate
+  965  mvn clean
+  966  clear
+  967  mvn clean validate
+  968  mvn clean
+  969  clear
+  970  git status
+  971  tree /f
+  972  tree /F
+  973  tree \F
+  974  tree 
+  975  mvn clean validate
+  976  git diff
+  977  mvn clean validate
+  978  mvn clean
+  979  mvn clean validate
+  980  clear
+  981  mvn clean validate
+  982  clear
+  983  mvn clean validate
+  984  mvn clean
+  985  clear
+  986  mvn clean validate
+  987  clear
+  988  mvn clean validate
+  989  clear
+  990  mvn clean validate
+  991  clear
+  992  mvn clean
+  993  mvn clean validate
+  994  tree
+  995  ls -alh
+  996  mv pmd-rules..xml pmd-rules.xml 
+  997  mvn clean validate
+  998  git status
+  999  git add .
+ 1000  git status
+ 1001  git commit -m"feat:wip"
+ 1002  mvn clean validate
+ 1003  touch 001-pmd-rules.xml
+ 1004  mvn pmd:pmd
+ 1005  mvn clean validate
+ 1006  mvn clean
+ 1007  ls
+ 1008  ls -alh
+ 1009  rm pmd-rules.xml 
+ 1010  ls -alh
+ 1011  mvn clean validate
+ 1012  mv 001-pmd-rules.xml  pmd-rules.xml 
+ 1013  mvn clean validate
+ 1014  cls
+ 1015  clear
+ 1016  mvn clean validate
+ 1017  clear
+ 1018  mvn clean validate
+ 1019  clear
+ 1020  mvn clean validate
+ 1021  git status
+ 1022  git add .
+ 1023  git commit -m"fix: pmd rules"
+ 1024  explorer.Exe .
+ 1025  mvn site:site
+ 1026  explorer.exe .
+ 1027  clear
+ 1028  mvn clean validate
+ 1029  clear
+ 1030  mvn clean
+ 1031  mvn clean validate
+ 1032  clear
+ 1033  mvn clean validate
+ 1034  git diff
+ 1035  clear
+ 1036  mvn clean validate
+ 1037  mvn clean validate -X
+ 1038  mvn clean validate -debug
+ 1039  explorer.Exe .
+ 1040  mvn clean validate
+ 1041  mvn clean verify
+ 1042  mvn install:install-file -Dfile=lib/usine.jar -DgroupId=com.client -DartifactIf=client-app -Dversion=1.0 -Dpackaging=jar
+ 1043  mvn install:install-file -Dfile=lib/usine.jar -DgroupId=com.client -DartifactId=client-app -Dversion=1.0 -Dpackaging=jar
+ 1044  mvn clean verify
+ 1045  mvn clean validate
+ 1046  mvn install:install-file -Dfile=lib/usine.jar -DgroupId=com.client -DartifactId=client-app -Dversion=1.0 -Dpackaging=jar -Dclassifier=sources
+ 1047  mvn clean validate
+ 1048  git status
+ 1049  git add .
+ 1050  git commit -m"fix:wip"
+ 1051  clear
+ 1052  mvn clean verif
+ 1053  mvn clean verify
+ 1054  clear
+ 1055  mvn clean verify
+ 1056  clear
+ 1057  ls -l target/client-sources
+ 1058  clear
+ 1059  mvn clean verify
+ 1060  mvn clean verifyclear
+ 1061  clear
+ 1062  mvn clean verifyclear
+ 1063  mvn clean verify
+ 1064  git diff
+ 1065  git add .
+ 1066  git commit -m"fix:wip"
+ 1067  clear
+ 1068  mvn clean verify
+ 1069  clear
+ 1070  mvn clean verify
+ 1071  git stash
+ 1072  clear
+ 1073  mvn clean verify
+ 1074  git status
+ 1075  git add .
+ 1076  git commit -m"fix:wip"
+ 1077  clear
+ 1078  mvn clean verify
+ 1079  git status
+ 1080  git diff
+ 1081  git add.
+ 1082  git add . 
+ 1083  clear
+ 1084  git status
+ 1085  git commit -m"fix:wip"
+ 1086  mvn clean verify
+ 1087  clear
+ 1088  mvn clean verify
+ 1089  git stash
+ 1090  mvn clean verify
+ 1091  cls
+ 1092  clear
+ 1093  mvn -X javadoc:javadoc
+ 1094  clear
+ 1095  mvn javadoc:javadoc
+ 1096  mvn -X org.apache.maven.plugins:maven-javadoc-plugin:3.6.3:javadoc
+ 1097  mvn org.apache.maven.plugins:maven-javadoc-plugin:3.6.3:javadoc
+ 1098  clear
+ 1099  mvn -X javadoc:javadoc -Dcheckstyle.skip=true
+ 1100  clear
+ 1101  mvn javadoc:javadoc -Dcheckstyle.skip=true
+ 1102  mvn javadoc:javadoc -Dcheckstyle.skip=true -X
+ 1103  mvn javadoc:javadoc -Dcheckstyle.skip=true -Dpmd.skip=true -X
+ 1104  clear
+ 1105  ls -lh target/client-sources/
+ 1106  mvn javadoc:javadoc -Dcheckstyle.skip=true -Dpmd.skip=true -X
+ 1107  clear
+ 1108  mvn -X javadoc:javadoc
+ 1109  mvn javadoc:javadoc -Dcheckstyle.skip=true -Dpmd.skip=true -X
+ 1110  mvn checkstyle:check
+ 1111  mvn verify
+ 1112  git stash
+ 1113  clear
+ 1114  mvn checkstyle:check
+ 1115  mvn verify
+ 1116  mvn pmd:check
+ 1117  mvn javadoc:javadoc
+ 1118  clear
+ 1119  mvn verify
+ 1120  clear
+ 1121  mvn verify
+ 1122  clear
+ 1123  mvn verify
+ 1124  mvn checkstyle:check
+ 1125  ls -lh target/client-sources/
+ 1126  mvn checkstyle:check
+ 1127  mvn pmd:check
+ 1128  mvn javadoc:javadoc
+ 1129  clear
+ 1130  git diff
+ 1131  explorer.Exe .
+ 1132  git diff
+ 1133  mvn javadoc:javadoc
+ 1134  clear
+ 1135  mvn javadoc:javadoc
+ 1136  mvn clean install
+ 1137  mvn javadoc:javadoc
+ 1138  git status
+ 1139  git add .
+ 1140  git commit -m"fix: dependencies for javadoc"
+ 1141  clear
+ 1142  mvn checkstyle:check
+ 1143  mvn verify
+ 1144  mvn clean validate
+ 1145  mvn clean verify
+ 1146  git diff
+ 1147  git stash
+ 1148  mvn clean verify
+ 1149  mvn clean
+ 1150  clear
+ 1151  mvn verify
+ 1152  git stash
+ 1153  git lg
+ 1154  git log
+ 1155  ls
+ 1156  git status
+ 1157  rm -rf target/
+ 1158  mvn clean install
+ 1159  mvn site:site
+ 1160  explorer.Exe .
+ 1161  git add .
+ 1162  git status
+ 1163  git commit -m"fix:wip"
+ 1164  mvn site
+ 1165  mvn clean verify site
+ 1166  ls -lh target/
+ 1167  mvn clean verify site -DgenerateReports=true
+ 1168  mvn clean site
+ 1169  clear
+ 1170  ls -lh target/
+ 1171  mvn clean site -Dcheckstyle.failOnViolation=false
+ 1172  mvn site -Dcheckstyle.skip=true -Dpmd.skip=false -Dspotbugs.skip=false
+ 1173  git status
+ 1174  git add .
+ 1175  git commit -m"fix:site"
+ 1176  mvn clean site -Dcheckstyle.skip=false -Dpmd.skip=false -Dspotbugs.skip=false
+ 1177  mvn clean site -Dcheckstyle.skip=true -Dpmd.skip=false -Dspotbugs.skip=false
+ 1178  mvn clean verify
+ 1179  mvn site -Dcheckstyle.skip=true -Dpmd.skip=false -Dspotbugs.skip=false
+ 1180  xsltproc
+ 1181  xsltproc checkstyle.xsl target/checkstyle-result.xml  > target/checkstyle-result.html
+ 1182  xsltproc checkstyle.xsl target/checkstyle-result.xml  > target/audit-checkstyle-result.html
+ 1183  git status
+ 1184  git diff
+ 1185  git add .
+ 1186  git status
+ 1187  git commit -m"feat: styling"
+ 1188  ls
+ 1189  nano README.md
+ 1190  git status
+ 1191  git add .
+ 1192  git commit -m"feat: doc"
+ 1193  git branch
+ 1194  git remote add origin https://github.com/kharmaodo/qosc-generator.git
+ 1195  git branch -M main
+ 1196  git push -u origin main
+ 1197  git status
+ 1198  git add .
+ 1199  git commit -m"fix: doc"
+ 1200  git push
+ 1201  git pull
+ 1202  git pull -f
+ 1203  git stash
+ 1204  git pull -f
+ 1205  git pull
+ 1206  git status
+ 1207  git pull
+ 1208  git branch
+ 1209  git checkout develop
+ 1210  git checkout -b develop
+ 1211  git pull
+ 1212  git remote -v
+ 1213  git pull -f
+ 1214  git checkout main
+ 1215  git pull
+ 1216  git config pull.ff only
+ 1217  git pull
+ 1218  git rebase
+ 1219  git rebase --skip
+ 1220  cat README.md 
+ 1221  git pull
+ 1222  history >> useful_commands.txt
