@@ -15,6 +15,8 @@
 ## Commandes
 
 ```bash
+mvn install:install-file -Dfile=lib/usine.jar -DgroupId=com.client -DartifactId=client-app -Dversion=1.0 -Dpackaging=jar -Dclassifier=sources
+ 
 mvn clean verify  # Audit (échoue sur violations)
 mvn site -Dcheckstyle.skip=true  # Rapport (target/site/index.html)
 ```
